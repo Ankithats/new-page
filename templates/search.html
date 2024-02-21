@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid idn">
+    <div class=" d-flex flex-wrap justify-content-center my-0 mx-4 pt-5">
+    
+      {% for i in data %}
+      <a href="{% url 'app:details' i.id %}">
+      <div class="card my-3 mx-3 pi" style="width: 18rem;">
+        
+          <img src="{{i.image.url}}" class="card-img-top" alt="...">
+        </a>
+        <div class="card-body">
+          <h3 style="font-size:20px;" class="card-text">{{i.name}}</h3>
+          <p>{{i.price}}</p>
+        </div>
+      </div>
+    </a>
+      {% endfor %} 
+    </div>
+
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="overlay-content"> 
+        <a href="{% url 'app:home' %}">All Products</a>
+        {% for cat in category %}
+        <a href="{% url 'app:prod_by_cat' cat.slug %}">{{cat.name}}</a>
+
+
+        
+        {% endfor %}
+             
+        
+       
+      </div>
+    </div>
+{% endblock %}

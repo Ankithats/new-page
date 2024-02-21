@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <div  class="container-fluid  dti">
+    <div class="container dtz d-flex">
+        <div class="my-5 ms-3">
+            <img class="img2" src="{{details.image.url}}" alt="">
+            <div class="mx-1 my-5 ">
+                <a style="margin-top: 5%;" href="{% url 'cart:addcart' details.id %}" class="btn  me-3 up">Add To Cart</a> 
+                <a style="margin-top: 5%;" href="#" class="btn   dl">Buy Now</a> 
+               
+           </div>
+            
+        </div>
+        <div class="  mx-3 px-3 dte py-5 text-light">
+            <h2 style="color: black;" class="font-weight-bold">{{details.name}}</h2>
+            <h3 style="padding-top: 5%;color:black; padding-left:2%;"><img src="{% static 'images/icons8-dollar-24.png' %}">{{details.price}}</h3>
+             
+
+        
+
+`
+        </div>
+    </div>
+
+  </div>
+  <div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content"> 
+      <a href="{% url 'app:home' %}">All Products</a>
+      {% for cat in category %}
+      <a href="{% url 'app:prod_by_cat' cat.slug %}">{{cat.name}}</a>
+      {% endfor %}
+           
+      
+     
+    </div>
+  </div>
+
+  {% endblock %}

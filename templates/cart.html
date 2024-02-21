@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid rt">
+    
+    
+      {% for i in cart %}
+    
+      <div class="my-3 mx-3 kk" style="width: 18rem;">
+        
+          <img src="{{i.product.image.url}}" class="card-img-top" alt="...">
+        </a>
+      </div>
+     
+        <div class="my-3 mx-3 " style="width: 18rem;">
+          <h3 style="font-size:20px;" class="card-text">{{i.product.name}}</h3>
+          <p>{{i.product.price}}</p>
+          <form class="d-flex me-5 mt-3" >
+            <a class="btn btn-light " href="{% url 'cart:reduce' i.product_id %}">-
+             
+            </a>
+          <h3 style="font-size:20px;" class="card-text ms-3">{{i.quantity}}</h3>
+<h3>{{i.products.id}}</h3>
+            
+            <a class="btn btn-light ms-3" href="{% url 'cart:addcart' i.product_id %}">+
+             
+            </a>
+        </form>
+        </div>
+        <div>
+          
+          <a class="btn btn-dark" href="{% url 'cart:remove' i.product_id %}">Remove
+             
+          </a>
+          
+        </div>
+        
+         
+       
+         
+          
+          
+           
+          
+            
+    
+        </form>
+      
+      <hr>
+      <a class="btn btn-warning mt-5" href="{% url 'cart:placeorder' i.product_id %}">Placeorder
+             
+      </a>
+      
+  
+    </a>
+      {% endfor %}
+    
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content"> 
+          <a href="{% url 'app:home' %}">All Products</a>
+          {% for cat in category %}
+          <a href="{% url 'app:prod_by_cat' cat.slug %}">{{cat.name}}</a>
+          {% endfor %}
+               
+          
+         
+        </div>
+      </div>
+{% endblock %}

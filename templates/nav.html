@@ -1,0 +1,88 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg ll">
+    <div style="background-color: black;" class="container-fluid  d-flex justify-content-start ">
+      <div class="navbar-nav">
+        <a class="nav-link active  ms-5" aria-current="page" href="{% url 'app:home' %}"><span style="font-size: large;color:white;font-weight:bold;">Home</span></a>
+     
+
+  
+
+        <li class="nav-item dropdown bt">
+          <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{% static 'images/icons8-3-dots-30 (1).png' %}" alt="">
+            
+          </a> 
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">About us</a></li>
+            <li><a class="dropdown-item" href="#">Help</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">mobile apps</a></li>
+            <li><a class="dropdown-item" href="#">feed back</a></li>
+          
+          </ul>
+
+          <li  class="nav-item">
+            <a class="nav-link" href="#"><img src="{% static 'images/icons8-globe-24 (1).png' %}" alt=""></a>
+           </li>
+    
+      </div>
+   
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNavAltMarkup">
+        <a style="color: white;" class="navbar-brand me-5" href="#"><h1>BOLD BEAUTY</h1></a>
+        
+      </div> 
+      <ul class="nav justify-content-end">
+          {% if user.is_authenticated %}
+            <li  class="nav-item">
+              <a class="nav-link a " aria-current="page" href="#"><span style="font-size: large;color:white;font-weight:bold;">{{user.username}}</span></a>
+            </li>
+            <li  class="nav-item">
+             <a class="nav-link" href="{% url 'app:logout' %}"><img src="{% static 'images/icons8-logout-rounded-24.png' %}" alt=""></a>
+            </li>
+          {% else %}
+            <li class="nav-item ">
+              <a class="nav-link" href="{% url 'app:login' %}"><img src="{% static 'images/icons8-user-24.png' %}" alt=""></a>
+            </li>
+        {% endif %}
+
+      
+        <li class="nav-item">
+          <a class="nav-link" href="#"><img src="{% static 'images/icons8-heart-24 (1).png' %}" alt=""></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link me-4" href="{% url 'cart:displaycart' %}"><img src="{% static 'images/icons8-cart-24.png' %}" alt=""></a>
+        </li> 
+      </ul> 
+     
+    </div>
+  </nav>
+  <nav class="navbar ">
+    <div class="container-fluid gg">
+      <div>
+        <span onclick="openNav()">
+
+  
+          <button class="button-74 ms-5" role="button">CATEGORY</button>
+          </span>
+    
+
+
+
+
+        
+    </div>
+     <form class="d-flex me-5" role="search"  action="{% url 'search:search' %}" method="GET">
+      <input style="width: 250px;" class="form-control me-2 box" name="q" type="search" placeholder= "Search products" aria-label="Search">
+      <button class="button-56" role="button">
+        <img src="{% static 'images/llll.png' %}" alt="">
+      </button>
+        
+
+    </form>
+ 
+      
+    </div>
+  </nav>
